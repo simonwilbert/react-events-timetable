@@ -32,31 +32,34 @@ const Timetable = ({
         <strong>{getTimetableTitle(tags)}</strong>
       </h2>
       {description && <p>{description}</p>}
-      {Object.entries(groupEventsByTagType(events, groupedBy)).map(
-        ([tagTypeTagName, events], idx: number) => (
-          <div
-            key={idx}
-            style={{
-              border: "1px solid",
-              borderRadius: "10px",
-              padding: "0",
-            }}
-          >
-            <h3
+      <div style={{ columnCount: 4, columnGap: 0 }}>
+        {Object.entries(groupEventsByTagType(events, groupedBy)).map(
+          ([tagTypeTagName, events], idx: number) => (
+            <div
+              key={idx}
               style={{
-                margin: 0,
-                padding: "10px",
-                backgroundColor: "#f60",
-                borderTopLeftRadius: "10px",
-                borderTopRightRadius: "10px",
+                border: "1px solid",
+                borderRadius: "10px",
+                margin: "0 10px 10px 10px",
+                breakInside: "avoid",
               }}
             >
-              {tagTypeTagName}
-            </h3>
-            <EventsByVenue events={events} />
-          </div>
-        )
-      )}
+              <h3
+                style={{
+                  margin: 0,
+                  padding: "10px",
+                  backgroundColor: "#f60",
+                  borderTopLeftRadius: "10px",
+                  borderTopRightRadius: "10px",
+                }}
+              >
+                {tagTypeTagName}
+              </h3>
+              <EventsByVenue events={events} />
+            </div>
+          )
+        )}
+      </div>
       <h2 className="fromTo">{getPrettyDateRange(from, to)}</h2>
     </div>
   );

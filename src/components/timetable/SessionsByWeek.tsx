@@ -26,7 +26,23 @@ const SessionsByWeek = ({ sessions }: SessionsByWeekProps) => {
 
         return (
           <div key={idx}>
-            <small>{`${monthName} ${firstDay} to ${lastDay}`} </small>
+            <small
+              style={{
+                backgroundColor: "#f8f9fa",
+                padding: "0.25em 0.4em",
+                fontSize: "75%",
+                borderRadius: "0.25rem",
+                display: "inline-block",
+                lineHeight: 1,
+                fontWeight: 700,
+                textAlign: "center",
+                verticalAlign: "baseline",
+                boxSizing: "border-box",
+                color: "rgb(144, 148, 156)",
+              }}
+            >
+              {`${monthName} ${firstDay} to ${lastDay}`}{" "}
+            </small>
             <TimeGroups sessions={weekSessions} />
           </div>
         );
